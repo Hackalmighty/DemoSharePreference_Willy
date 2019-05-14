@@ -5,48 +5,35 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-    EditText usuario;
-    EditText pwd;
-
+public class Actividad2 extends AppCompatActivity {
+    TextView usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        usuario = findViewById(R.id.usuario);
-        pwd = findViewById(R.id.pwd);
+        setContentView(R.layout.activity_actividad2);
         SharedPreferences pref = getApplicationContext().
                 getSharedPreferences("demo_pref",MODE_PRIVATE);
-        String usuario = pref.getString("usuario", "");
-        if (!usuario.equals("")){
-            IrActividad2();
-        }
-
+        String nombre = pref.getString("usuario", "Willy");
+        usuario = findViewById(R.id.usuario);
+        usuario.setText(nombre);
 
     }
 
-    public void Login (View v){
-        //Validar password
-        //Validar usuario
+    public void Logout(View v){
 
         SharedPreferences pref = getApplicationContext().
                 getSharedPreferences("demo_pref",MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("usuario", usuario.getText().toString());
         editor.commit();
-        IrActividad2();
 
-
-    }
-    private void IrActividad2(){
-        Intent i = new Intent(this, Actividad2.class);
-        i.  setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        Intent i = new Intent(this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(i);
         this.finish();
+
     }
 }
