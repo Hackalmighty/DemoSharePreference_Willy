@@ -19,7 +19,6 @@ public class Actividad2 extends AppCompatActivity {
         String nombre = pref.getString("usuario", "Willy");
         usuario = findViewById(R.id.usuario);
         usuario.setText(nombre);
-
     }
 
     public void Logout(View v){

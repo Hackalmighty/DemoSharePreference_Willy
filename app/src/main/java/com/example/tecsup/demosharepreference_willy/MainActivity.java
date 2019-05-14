@@ -11,13 +11,13 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     EditText usuario;
     EditText pwd;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //mostrar thema
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main);
         usuario = findViewById(R.id.usuario);
         pwd = findViewById(R.id.pwd);
         SharedPreferences pref = getApplicationContext().
